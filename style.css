@@ -11,9 +11,10 @@
 /* =Imports styles from the parent theme
 -------------------------------------------------------------- */
 @import url('../twentyten/style.css');
-    /* =Theme customization starts here
-    -------------------------------------------------------------- */
+/* =Theme customization starts here
+-------------------------------------------------------------- */
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic);
+@import url(http://yui.yahooapis.com/pure/0.3.0/buttons-min.css);
 
 h3#comments-title, h3#reply-title, #access .menu, #access div.menu ul, #cancel-comment-reply-link, .form-allowed-tags,
 #site-info, #site-title, #wp-calendar, .comment-meta, .comment-body tr th, .comment-body thead th, .entry-content label,
@@ -26,25 +27,56 @@ body, input, textarea, .page-title span, .pingback a.url {
     font-family: 'Droid Serif', Georgia, serif;
 }
 
-.entry-content a:visited, .widget-area a:visited {
+#content a, #content a:active, #content a:hover, #content a:visited {
+    text-decoration: none;
+}
+
+.entry-content a, .entry-content a:visited, .widget-area a:visited {
     color: #0066cc;
 }
 
 #content a:active, .widget-area a:active, #content a:hover, .widget-area a:hover {
-    color: darkorange;
-    text-decoration: none;
+    color: #ff8c00;
 }
 
 #content .featured-image {
     display: inline-block;
     float: left;
     margin-right: 20px;
+    padding-top: 12px;
 }
 
 .entry-content, .entry-summary {
     clear: right;
 }
 
-.tooltip a, a.jTip, .entry-meta a, .entry-utility a {
-    text-decoration: none;
+div.cat-links {
+    margin-bottom: 2px;
+}
+
+div.cat-links > a {
+    text-transform: uppercase;
+    font-size: .8em;
+    font-weight: bold;
+    font-family: Open Sans, Arial, Helvetica, sans-serif;
+}
+
+div.continue-reading {
+    margin: 5px 0;
+}
+
+#content div.continue-reading > a {
+    color: black;
+}
+
+/** Category Icons **/
+
+div.cat-links.judge-articles:before {
+    content: "\f118";
+    font: normal 30px/1 'dashicons';
+}
+
+div.cat-links.announcements:before {
+    content: "\f101";
+    font: normal 30px/1 'dashicons';
 }

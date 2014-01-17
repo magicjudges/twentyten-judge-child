@@ -1,11 +1,22 @@
 <?php
 
+add_action( 'wp_enqueue_scripts', 'enqueue_dashicons_front_end' );
+
+function enqueue_dashicons_front_end() {
+	wp_enqueue_style( 'dashicons-style', get_stylesheet_uri(), array('dashicons'), '1.0' );
+}
+
+if ( ! function_exists( 'twentyten_category_classes' ) ) :
+	function twentyten_category_classes() {
+		echo 'cat-links';
+		$categories = get_the_category();
+		foreach ( $categories as $cat ) {
+			echo ' ' . $cat->slug;
+		}
+	}
+endif;
+
 if ( ! function_exists( 'twentyten_posted_on' ) ) :
-	/**
-	 * Prints HTML with meta information for the current post-date/time and author.
-	 *
-	 * @since Twenty Ten 1.0
-	 */
 	function twentyten_posted_on() {
 		$author_html = sprintf( ' <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 			get_author_posts_url( get_the_author_meta( 'ID' ) ),
@@ -53,5 +64,11 @@ if ( ! function_exists( 'twentyten_posted_on' ) ) :
 			),
 			$author_html
 		);
+	}
+endif;
+
+if ( ! function_exists( 'twentyten_continue_reading_link' ) ) :
+	function twentyten_continue_reading_link() {
+		return '<div class="continue-reading"><a class="pure-button" href="'. get_permalink() . '">' . __( 'Continue reading', 'twentyten' ) . '</a></div>';
 	}
 endif;
