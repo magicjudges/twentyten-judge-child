@@ -175,7 +175,13 @@
 				</div><!-- .entry-summary -->
 			<?php else : ?>
 				<div class="entry-content">
-					<?php echo do_shortcode( get_the_excerpt() ); ?>
+					<?php
+					if(get_theme_mod('show_excerpts') == 'false') {
+						the_content();
+					} else {
+						echo do_shortcode( get_the_excerpt() );
+					}
+					?>
 					<?php wp_link_pages( array('before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>') ); ?>
 				</div><!-- .entry-content -->
 			<?php endif; ?>

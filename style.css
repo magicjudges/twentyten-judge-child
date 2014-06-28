@@ -7,7 +7,6 @@
  Template:       twentyten
  Version:        0.1
 */
-
 /* =Imports styles from the parent theme
 -------------------------------------------------------------- */
 @import url('../twentyten/style.css');
@@ -16,10 +15,7 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic);
 @import url(http://yui.yahooapis.com/pure/0.3.0/buttons-min.css);
 
-h3#comments-title, h3#reply-title, #access .menu, #access div.menu ul, #cancel-comment-reply-link, .form-allowed-tags,
-#site-info, #site-title, #wp-calendar, .comment-meta, .comment-body tr th, .comment-body thead th, .entry-content label,
-.entry-content tr th, .entry-content thead th, .entry-meta, .entry-title, .entry-utility, #respond label, .navigation,
-.page-title, .pingback p, .reply, .widget-title, .wp-caption-text, .widget-area {
+h3#comments-title, h3#reply-title, #access .menu, #access div.menu ul, ul.menu, #cancel-comment-reply-link, .form-allowed-tags, #site-info, #site-title, #wp-calendar, .comment-meta, .comment-body tr th, .comment-body thead th, .entry-content label, .entry-content tr th, .entry-content thead th, .entry-meta, .entry-title, .entry-utility, #respond label, .navigation, .page-title, .pingback p, .reply, .widget-title, .wp-caption-text, .widget-area, div.cat-links > a, div.continue-reading {
     font-family: Open Sans, Arial, Helvetica, sans-serif;
 }
 
@@ -58,25 +54,118 @@ div.cat-links > a {
     text-transform: uppercase;
     font-size: .8em;
     font-weight: bold;
-    font-family: Open Sans, Arial, Helvetica, sans-serif;
+    color: black;
 }
 
 div.continue-reading {
     margin: 5px 0;
+    font-weight: bold;
 }
 
 #content div.continue-reading > a {
     color: black;
 }
 
+.post .featured-image ~ .entry-content {
+    margin-left: 129px;
+    padding-left: 20px;
+}
+
+.featured-image img {
+    width: 125px;
+    height: 125px;
+    border-radius: 5px;
+    border: 2px solid;
+    -moz-border-radius: 5px;
+    box-shadow: 1px 1px 5px #888888;
+}
+
 /** Category Icons **/
 
-div.cat-links.judge-articles:before {
-    content: "\f118";
+div.cat-links:before {
     font: normal 30px/1 'dashicons';
 }
 
+div.cat-links.judge-articles:before {
+    content: "\f118";
+}
+
 div.cat-links.announcements:before {
+    content: "\f319";
+}
+
+div.cat-links.high-level-promotions:before {
+    content: "\f313";
+}
+
+div.cat-links.magic-judge-monthly:before {
+    content: "\f330";
+}
+
+div.cat-links.rules-policy-update:before {
     content: "\f101";
-    font: normal 30px/1 'dashicons';
+}
+
+/** Xili language **/
+
+#language {
+    display: block;
+    margin: 0 auto;
+    float: left;
+    width: 940px;
+}
+
+#language ul.menu {
+    list-style: none;
+    margin: 0;
+    float: right;
+}
+
+#language ul.menu li {
+    float: left;
+    position: relative;
+    padding-left: 15px;
+}
+
+
+#language ul.menu a {
+    color: black;
+    display: block;
+    line-height: 38px;
+    padding: 0 10px;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+#language ul.menu > li.lang-en, .external-languages a.en {
+    background: transparent url('images/flags/en_us.png') no-repeat 1px;
+}
+
+#language ul.menu > li.lang-de, .external-languages a.de {
+    background: transparent url('images/flags/de_de.png') no-repeat 1px;
+}
+
+#language ul.menu > li.lang-fr, .external-languages a.fr {
+    background: transparent url('images/flags/fr_fr.png') no-repeat 1px;
+}
+
+#language ul.menu > li.lang-es, .external-languages a.es {
+    background: transparent url('images/flags/es_es.png') no-repeat 1px;
+}
+
+#main {
+    padding-top: 20px;
+}
+
+.external-languages {
+    float: right;
+}
+
+.external-languages ul {
+    list-style: none;
+    margin: 0;
+}
+
+.external-languages a {
+    padding-left: 20px;
 }

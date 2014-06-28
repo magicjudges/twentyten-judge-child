@@ -3,7 +3,7 @@
 add_action( 'wp_enqueue_scripts', 'enqueue_dashicons_front_end' );
 
 function enqueue_dashicons_front_end() {
-	wp_enqueue_style( 'dashicons-style', get_stylesheet_uri(), array('dashicons'), '1.0' );
+	wp_enqueue_style( 'dashicons-style', get_stylesheet_uri(), array( 'dashicons' ), '1.0' );
 }
 
 if ( ! function_exists( 'twentyten_category_classes' ) ) :
@@ -24,7 +24,7 @@ if ( ! function_exists( 'twentyten_posted_on' ) ) :
 			get_the_author()
 		);
 
-		include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		if ( is_plugin_active( 'external-author/external-author.php' ) ) {
 			if ( get_post_meta( get_the_ID(), '_external_authors_no_author', true ) ) {
 				$author_html = '';
@@ -33,7 +33,7 @@ if ( ! function_exists( 'twentyten_posted_on' ) ) :
 				if ( $external_authors && count( $external_authors ) > 0 ) {
 					$author_html = ' <span class="meta-sep">by</span> ';
 					foreach ( $external_authors as $index => $author ) {
-						if ( is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' ) && ! empty($author['dci']) ) {
+						if ( is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' ) && ! empty( $author['dci'] ) ) {
 							$single_author_html = do_shortcode( sprintf( '[judge dci=%2$s]%1$s[/judge]',
 								$author['name'],
 								$author['dci']
@@ -69,6 +69,46 @@ endif;
 
 if ( ! function_exists( 'twentyten_continue_reading_link' ) ) :
 	function twentyten_continue_reading_link() {
-		return '<div class="continue-reading"><a class="pure-button" href="'. get_permalink() . '">' . __( 'Continue reading', 'twentyten' ) . '</a></div>';
+		return '<div class="continue-reading"><a class="pure-button" href="' . get_permalink() . '">' . __( 'Continue reading', 'twentyten' ) . '</a></div>';
 	}
 endif;
+
+add_filter( 'post_thumbnail_size', 'twentyten_judge_child_thumbnail_size' );
+
+function twentyten_judge_child_thumbnail_size( $size ) {
+	return;
+}
+
+add_action( 'after_setup_theme', 'language_setup' );
+
+function language_setup() {
+	load_theme_textdomain( 'twentyten', get_stylesheet_directory() . '/languages' );
+	register_nav_menus( array(
+		'language' => __( 'Language Navigation', 'twentyten-judge' ),
+	) );
+}
+
+function judge_child_customizer( WP_Customize_Manager $wp_customize ) {
+	$wp_customize->add_setting( 'show_excerpts' , array(
+		'default'     => 'true',
+		'transport'   => 'refresh',
+	) );
+
+	$wp_customize->add_section( 'judge_child_customizer' , array(
+		'title'      => __( 'Content Options', 'twentyten-judge' ),
+		'priority'   => 100,
+	) );
+
+	$wp_customize->add_control( 'judge_child_excerpt_control', array(
+		'label' => __('Content Excerpts'),
+		'section' => 'judge_child_customizer',
+		'settings' => 'show_excerpts',
+		'type' => 'radio',
+		'choices' => array(
+			'true' => __('Only Excerpts', 'twentyten-judge'),
+			'false' => __('Full Posts', 'twentyten-judge')
+		)
+	) );
+
+}
+add_action( 'customize_register', 'judge_child_customizer' );

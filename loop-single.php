@@ -27,6 +27,7 @@
 
 		<div class="entry-meta">
 			<?php twentyten_posted_on(); ?>
+			<?php if(function_exists('language_links')) : language_links(); endif; ?>
 		</div><!-- .entry-meta -->
 
 		<div class="entry-content">
