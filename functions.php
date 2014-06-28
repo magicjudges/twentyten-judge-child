@@ -1,11 +1,5 @@
 <?php
 
-add_action( 'wp_enqueue_scripts', 'enqueue_dashicons_front_end' );
-
-function enqueue_dashicons_front_end() {
-	wp_enqueue_style( 'dashicons-style', get_stylesheet_uri(), array( 'dashicons' ), '1.0' );
-}
-
 if ( ! function_exists( 'twentyten_category_classes' ) ) :
 	function twentyten_category_classes() {
 		echo 'cat-links';
@@ -73,13 +67,10 @@ if ( ! function_exists( 'twentyten_continue_reading_link' ) ) :
 	}
 endif;
 
-add_filter( 'post_thumbnail_size', 'twentyten_judge_child_thumbnail_size' );
-
 function twentyten_judge_child_thumbnail_size( $size ) {
 	return;
 }
-
-add_action( 'after_setup_theme', 'language_setup' );
+add_filter( 'post_thumbnail_size', 'twentyten_judge_child_thumbnail_size' );
 
 function language_setup() {
 	load_theme_textdomain( 'twentyten', get_stylesheet_directory() . '/languages' );
@@ -87,6 +78,7 @@ function language_setup() {
 		'language' => __( 'Language Navigation', 'twentyten-judge' ),
 	) );
 }
+add_action( 'after_setup_theme', 'language_setup' );
 
 function judge_child_customizer( WP_Customize_Manager $wp_customize ) {
 	$wp_customize->add_setting( 'show_excerpts' , array(

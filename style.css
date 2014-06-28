@@ -80,32 +80,6 @@ div.continue-reading {
     box-shadow: 1px 1px 5px #888888;
 }
 
-/** Category Icons **/
-
-div.cat-links:before {
-    font: normal 30px/1 'dashicons';
-}
-
-div.cat-links.judge-articles:before {
-    content: "\f118";
-}
-
-div.cat-links.announcements:before {
-    content: "\f319";
-}
-
-div.cat-links.high-level-promotions:before {
-    content: "\f313";
-}
-
-div.cat-links.magic-judge-monthly:before {
-    content: "\f330";
-}
-
-div.cat-links.rules-policy-update:before {
-    content: "\f101";
-}
-
 /** Xili language **/
 
 #language {
