@@ -176,7 +176,7 @@
 			<?php else : ?>
 				<div class="entry-content">
 					<?php
-					if(get_theme_mod('show_excerpts') == 'false') {
+					if(get_theme_mod('show_excerpts') == 'full') {
 						the_content();
 					} else {
 						echo do_shortcode( get_the_excerpt() );

@@ -1,11 +1,13 @@
 /*
- Theme Name:     Twenty Ten Judge Child
+ Theme Name:     Judge Blogs
  Theme URI:      http://www.aleaiactaest.ch
- Description:    Twenty Ten Child Theme for the Judge Program
- Author:         Joel Krebs
+ Description:    Twenty Ten Child Theme for the Judge Program. Besides some minor layout and font tweaks from the parent theme, it offers support for various plugins developed for the specific needs of the Judge Blogs Network.
+ Author:         Joel Micha Krebs
  Author URI:     http://www.aleaiactaest.ch
  Template:       twentyten
- Version:        0.1
+ Version:        1.0
+ Tags:           Black, Blue, White, Two Columns, Fixed Layout, Custom Header, Custom Background, Threaded Comments, Sticky Post, Translation Ready, Microformats, RTL Language Support, Editor Style, Custom Menu, Flexible Header
+ Textdomain:     twentyten-judge
 */
 /* =Imports styles from the parent theme
 -------------------------------------------------------------- */
@@ -23,15 +25,17 @@ body, input, textarea, .page-title span, .pingback a.url {
     font-family: 'Droid Serif', Georgia, serif;
 }
 
-#content a, #content a:active, #content a:hover, #content a:visited {
+#content a, #content a:active, #content a:hover, #content a:visited,
+.widget-area a, .widget-area a:active, .widget-area a:hover, .widget-area a:visited {
     text-decoration: none;
 }
 
-.entry-content a, .entry-content a:visited, .widget-area a:visited {
+.entry-content a, .entry-content a:visited, .widget-area a, .widget-area a:visited, .widget_rss a.rsswidget {
     color: #0066cc;
 }
 
-#content a:active, .widget-area a:active, #content a:hover, .widget-area a:hover {
+#content a:active, #content a:hover, .widget-area a:active, .widget-area a:hover,
+#language a:hover, #language a:active, .widget_rss a.rsswidget:hover, .widget_rss a.rsswidget:active {
     color: #ff8c00;
 }
 
@@ -59,11 +63,12 @@ div.cat-links > a {
 
 div.continue-reading {
     margin: 5px 0;
-    font-weight: bold;
 }
 
-#content div.continue-reading > a {
+#content a.pure-button {
     color: black;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .post .featured-image ~ .entry-content {
@@ -102,7 +107,7 @@ div.continue-reading {
 }
 
 
-#language ul.menu a {
+#language a {
     color: black;
     display: block;
     line-height: 38px;
@@ -116,7 +121,7 @@ div.continue-reading {
 }
 
 #language ul.menu > li.lang-de, .external-languages a.de {
-    background: transparent url('images/flags/de_de.png') no-repeat 1px;
+    background: transparent url('images/flags/de.png') no-repeat 1px;
 }
 
 #language ul.menu > li.lang-fr, .external-languages a.fr {
@@ -124,7 +129,27 @@ div.continue-reading {
 }
 
 #language ul.menu > li.lang-es, .external-languages a.es {
-    background: transparent url('images/flags/es_es.png') no-repeat 1px;
+    background: transparent url('images/flags/es.png') no-repeat 1px;
+}
+
+#language ul.menu > li.lang-cn, .external-languages a.cn {
+    background: transparent url('images/flags/cn.png') no-repeat 1px;
+}
+
+#language ul.menu > li.lang-ja, .external-languages a.ja {
+    background: transparent url('images/flags/ja.png') no-repeat 1px;
+}
+
+#language ul.menu > li.lang-it, .external-languages a.it {
+    background: transparent url('images/flags/it.png') no-repeat 1px;
+}
+
+#language ul.menu > li.lang-ru, .external-languages a.ru {
+    background: transparent url('images/flags/ru.png') no-repeat 1px;
+}
+
+#language ul.menu > li.lang-pt, .external-languages a.pt {
+    background: transparent url('images/flags/pt.png') no-repeat 1px;
 }
 
 #main {
@@ -142,4 +167,32 @@ div.continue-reading {
 
 .external-languages a {
     padding-left: 20px;
+}
+
+.wp-caption {
+    max-width: 100%;
+}
+
+.wp-caption img {
+    display: block;
+    margin: 1.2% auto 0;
+    max-width: 98%;
+}
+
+.wp-caption-text {
+    text-align: center;
+}
+
+.wp-caption .wp-caption-text {
+    margin: 0.8075em 0;
+}
+
+.entry-content, .entry-summary {
+    padding: 0;
+}
+
+#entry-author-info #author-avatar {
+    height: 70px;
+    width: 70px;
+    padding: 5px;
 }

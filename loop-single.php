@@ -35,7 +35,7 @@
 			<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
 
-		<?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
+		<?php if ( get_the_author_meta( 'description' ) && show_author_info() ) : // If a user has filled out their description, show a bio on their entries  ?>
 			<div id="entry-author-info">
 				<div id="author-avatar">
 					<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentyten_author_bio_avatar_size', 60 ) ); ?>
@@ -55,7 +55,7 @@
 		<?php
 		$comment_url = get_post_meta(get_the_ID(), '_comment_url', true);
 		if($comment_url !== null && strlen($comment_url)) {
-			echo '<a href="' . $comment_url . '" target="_blank">';
+			echo '<a class="pure-button" href="' . $comment_url . '" target="_blank">';
 			printf( __('Join the discussion on JudgeApps!'));
 			echo '</a>';
 		}

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Adds categories slugs as classes to the category in the loop to allow styling.
+ */
 if ( ! function_exists( 'twentyten_category_classes' ) ) :
 	function twentyten_category_classes() {
 		echo 'cat-links';
@@ -10,6 +13,9 @@ if ( ! function_exists( 'twentyten_category_classes' ) ) :
 	}
 endif;
 
+/**
+ * Replaces the meta data line of the parent theme with a custom one to allow the external author plugin to overwrite it.
+ */
 if ( ! function_exists( 'twentyten_posted_on' ) ) :
 	function twentyten_posted_on() {
 		$author_html = sprintf( ' <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
@@ -26,7 +32,8 @@ if ( ! function_exists( 'twentyten_posted_on' ) ) :
 				$external_authors = get_post_meta( get_the_ID(), '_external_authors', true );
 				if ( $external_authors && count( $external_authors ) > 0 ) {
 					$author_html = ' <span class="meta-sep">by</span> ';
-					foreach ( $external_authors as $index => $author ) {
+					$i = 0;
+					foreach ( $external_authors as $author ) {
 						if ( is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' ) && ! empty( $author['dci'] ) ) {
 							$single_author_html = do_shortcode( sprintf( '[judge dci=%2$s]%1$s[/judge]',
 								$author['name'],
@@ -39,11 +46,13 @@ if ( ! function_exists( 'twentyten_posted_on' ) ) :
 						$author_html .= do_shortcode( sprintf( '<span class="author vcard">%1$s</span>',
 							$single_author_html
 						) );
-						if ( $index < count( $external_authors ) - 2 ) {
+
+						if ( $i < count( $external_authors ) - 2 ) {
 							$author_html .= ', ';
-						} else if ( $index < count( $external_authors ) - 1 ) {
+						} else if ( $i < count( $external_authors ) - 1 ) {
 							$author_html .= ' ' . __( ' and ' );
 						}
+						$i ++;
 					}
 				}
 			}
@@ -61,6 +70,9 @@ if ( ! function_exists( 'twentyten_posted_on' ) ) :
 	}
 endif;
 
+/**
+ * Custom continue reading link.
+ */
 if ( ! function_exists( 'twentyten_continue_reading_link' ) ) :
 	function twentyten_continue_reading_link() {
 		return '<div class="continue-reading"><a class="pure-button" href="' . get_permalink() . '">' . __( 'Continue reading', 'twentyten' ) . '</a></div>';
@@ -70,37 +82,98 @@ endif;
 function twentyten_judge_child_thumbnail_size( $size ) {
 	return;
 }
+
 add_filter( 'post_thumbnail_size', 'twentyten_judge_child_thumbnail_size' );
 
-function language_setup() {
+function theme_setup() {
 	load_theme_textdomain( 'twentyten', get_stylesheet_directory() . '/languages' );
 	register_nav_menus( array(
 		'language' => __( 'Language Navigation', 'twentyten-judge' ),
 	) );
+
+	if ( ! get_theme_mod( 'show_excerpts' ) ) {
+		set_theme_mod( 'show_excerpts', 'excerpts' );
+	}
+
+	add_filter( 'get_the_excerpt', 'do_shortcode' );
+	remove_filter( 'get_the_excerpt', 'wp_trim_excerpt', 10 );
 }
-add_action( 'after_setup_theme', 'language_setup' );
+
+add_action( 'after_setup_theme', 'theme_setup' );
+
+function twentyten_judge_child_wp_trim_excerpt( $text = '' ) {
+	$raw_excerpt = $text;
+	if ( '' == $text ) {
+		$text = get_the_content( '' );
+
+		/** This filter is documented in wp-includes/post-template.php */
+		$text = apply_filters( 'the_content', $text );
+		$text = str_replace( ']]>', ']]&gt;', $text );
+
+		/**
+		 * Filter the number of words in an excerpt.
+		 *
+		 * @since 2.7.0
+		 *
+		 * @param int $number The number of words. Default 55.
+		 */
+		$excerpt_length = apply_filters( 'excerpt_length', 55 );
+		/**
+		 * Filter the string in the "more" link displayed after a trimmed excerpt.
+		 *
+		 * @since 2.9.0
+		 *
+		 * @param string $more_string The string shown within the more link.
+		 */
+		$excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+		$text = wp_trim_words( $text, $excerpt_length, $excerpt_more );
+	}
+	/**
+	 * Filter the trimmed excerpt string.
+	 *
+	 * @since 2.8.0
+	 *
+	 * @param string $text The trimmed text.
+	 * @param string $raw_excerpt The text prior to trimming.
+	 */
+	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
+}
+
+add_filter( 'get_the_excerpt', 'twentyten_judge_child_wp_trim_excerpt', 99, 1 );
 
 function judge_child_customizer( WP_Customize_Manager $wp_customize ) {
-	$wp_customize->add_setting( 'show_excerpts' , array(
-		'default'     => 'true',
-		'transport'   => 'refresh',
+	$wp_customize->add_setting( 'show_excerpts', array(
+		'default' => 'excerpts',
+		'transport' => 'refresh',
 	) );
 
-	$wp_customize->add_section( 'judge_child_customizer' , array(
-		'title'      => __( 'Content Options', 'twentyten-judge' ),
-		'priority'   => 100,
+	$wp_customize->add_section( 'judge_child_customizer', array(
+		'title' => __( 'Content Options', 'twentyten-judge' ),
+		'priority' => 100,
 	) );
 
 	$wp_customize->add_control( 'judge_child_excerpt_control', array(
-		'label' => __('Content Excerpts'),
+		'label' => __( 'Content Excerpts' ),
 		'section' => 'judge_child_customizer',
 		'settings' => 'show_excerpts',
 		'type' => 'radio',
 		'choices' => array(
-			'true' => __('Only Excerpts', 'twentyten-judge'),
-			'false' => __('Full Posts', 'twentyten-judge')
+			'excerpts' => __( 'Only Excerpts', 'twentyten-judge' ),
+			'full' => __( 'Full Posts', 'twentyten-judge' )
 		)
 	) );
 
 }
+
 add_action( 'customize_register', 'judge_child_customizer' );
+
+function show_author_info() {
+	if ( is_plugin_active( 'external-author/external-author.php' ) ) {
+		if ( get_post_meta( get_the_ID(), '_external_authors_no_author', true ) ||
+			count( get_post_meta( get_the_ID(), '_external_authors', true ) ) > 0
+		) {
+			return false;
+		}
+	}
+	return true;
+}
