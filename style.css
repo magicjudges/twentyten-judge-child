@@ -35,7 +35,8 @@ body, input, textarea, .page-title span, .pingback a.url {
 }
 
 #content a:active, #content a:hover, .widget-area a:active, .widget-area a:hover,
-#language a:hover, #language a:active, .widget_rss a.rsswidget:hover, .widget_rss a.rsswidget:active {
+#language a:hover, #language a:active, #language-single a:hover, #language a:active,
+.widget_rss a.rsswidget:hover, .widget_rss a.rsswidget:active {
     color: #ff8c00;
 }
 
@@ -94,20 +95,26 @@ div.continue-reading {
     width: 940px;
 }
 
-#language ul.menu {
+#language-single {
+    display: block;
+    margin: 0 auto;
+    float: left;
+    width: 640px;
+}
+
+#language ul.menu, #language-single ul.menu {
     list-style: none;
     margin: 0;
     float: right;
 }
 
-#language ul.menu li {
+#language ul.menu li, #language-single ul.menu li {
     float: left;
     position: relative;
     padding-left: 15px;
 }
 
-
-#language a {
+#language a, #language-single a {
     color: black;
     display: block;
     line-height: 38px;
@@ -116,39 +123,39 @@ div.continue-reading {
     font-size: 1.1em;
 }
 
-#language ul.menu > li.lang-en, .external-languages a.en {
+#language ul.menu > li.lang-en, #language-single ul.menu > li.lang-en, .external-languages a.en {
     background: transparent url('images/flags/en_us.png') no-repeat 1px;
 }
 
-#language ul.menu > li.lang-de, .external-languages a.de {
+#language ul.menu > li.lang-de, #language-single ul.menu > li.lang-de, .external-languages a.de {
     background: transparent url('images/flags/de.png') no-repeat 1px;
 }
 
-#language ul.menu > li.lang-fr, .external-languages a.fr {
+#language ul.menu > li.lang-fr, #language-single ul.menu > li.lang-fr, .external-languages a.fr {
     background: transparent url('images/flags/fr_fr.png') no-repeat 1px;
 }
 
-#language ul.menu > li.lang-es, .external-languages a.es {
+#language ul.menu > li.lang-es, #language-single ul.menu > li.lang-es, .external-languages a.es {
     background: transparent url('images/flags/es.png') no-repeat 1px;
 }
 
-#language ul.menu > li.lang-cn, .external-languages a.cn {
+#language ul.menu > li.lang-cn, #language-single ul.menu > li.lang-cn, .external-languages a.cn {
     background: transparent url('images/flags/cn.png') no-repeat 1px;
 }
 
-#language ul.menu > li.lang-ja, .external-languages a.ja {
+#language ul.menu > li.lang-ja, #language-single ul.menu > li.lang-ja, .external-languages a.ja {
     background: transparent url('images/flags/ja.png') no-repeat 1px;
 }
 
-#language ul.menu > li.lang-it, .external-languages a.it {
+#language ul.menu > li.lang-it, #language-single ul.menu > li.lang-it, .external-languages a.it {
     background: transparent url('images/flags/it.png') no-repeat 1px;
 }
 
-#language ul.menu > li.lang-ru, .external-languages a.ru {
+#language ul.menu > li.lang-ru, #language-single ul.menu > li.lang-ru, .external-languages a.ru {
     background: transparent url('images/flags/ru.png') no-repeat 1px;
 }
 
-#language ul.menu > li.lang-pt, .external-languages a.pt {
+#language ul.menu > li.lang-pt, #language-single ul.menu > li.lang-pt, .external-languages a.pt {
     background: transparent url('images/flags/pt.png') no-repeat 1px;
 }
 

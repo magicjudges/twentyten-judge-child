@@ -3,7 +3,7 @@
 /**
  * Adds categories slugs as classes to the category in the loop to allow styling.
  */
-if ( ! function_exists( 'twentyten_category_classes' ) ) :
+if ( !function_exists( 'twentyten_category_classes' ) ) :
 	function twentyten_category_classes() {
 		echo 'cat-links';
 		$categories = get_the_category();
@@ -16,7 +16,7 @@ endif;
 /**
  * Replaces the meta data line of the parent theme with a custom one to allow the external author plugin to overwrite it.
  */
-if ( ! function_exists( 'twentyten_posted_on' ) ) :
+if ( !function_exists( 'twentyten_posted_on' ) ) :
 	function twentyten_posted_on() {
 		$author_html = sprintf( ' <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 			get_author_posts_url( get_the_author_meta( 'ID' ) ),
@@ -34,7 +34,7 @@ if ( ! function_exists( 'twentyten_posted_on' ) ) :
 					$author_html = ' <span class="meta-sep">by</span> ';
 					$i = 0;
 					foreach ( $external_authors as $author ) {
-						if ( is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' ) && ! empty( $author['dci'] ) ) {
+						if ( is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' ) && !empty( $author['dci'] ) ) {
 							$single_author_html = do_shortcode( sprintf( '[judge dci=%2$s]%1$s[/judge]',
 								$author['name'],
 								$author['dci']
@@ -52,7 +52,7 @@ if ( ! function_exists( 'twentyten_posted_on' ) ) :
 						} else if ( $i < count( $external_authors ) - 1 ) {
 							$author_html .= ' ' . __( ' and ' );
 						}
-						$i ++;
+						$i++;
 					}
 				}
 			}
@@ -73,7 +73,7 @@ endif;
 /**
  * Custom continue reading link.
  */
-if ( ! function_exists( 'twentyten_continue_reading_link' ) ) :
+if ( !function_exists( 'twentyten_continue_reading_link' ) ) :
 	function twentyten_continue_reading_link() {
 		return '<div class="continue-reading"><a class="pure-button" href="' . get_permalink() . '">' . __( 'Continue reading', 'twentyten' ) . '</a></div>';
 	}
@@ -89,9 +89,10 @@ function theme_setup() {
 	load_theme_textdomain( 'twentyten', get_stylesheet_directory() . '/languages' );
 	register_nav_menus( array(
 		'language' => __( 'Language Navigation', 'twentyten-judge' ),
+		'language-single' => __( 'Language Navigation Single', 'twentyten-judge' )
 	) );
 
-	if ( ! get_theme_mod( 'show_excerpts' ) ) {
+	if ( !get_theme_mod( 'show_excerpts' ) ) {
 		set_theme_mod( 'show_excerpts', 'excerpts' );
 	}
 
