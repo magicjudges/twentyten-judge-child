@@ -21,8 +21,8 @@ h3#comments-title, h3#reply-title, #access .menu, #access div.menu ul, ul.menu, 
     font-family: Open Sans, Arial, Helvetica, sans-serif;
 }
 
-body, input, textarea, .page-title span, .pingback a.url {
-    font-family: 'Droid Serif', Georgia, serif;
+body, input, textarea, .page-title span, .pingback a.url, .gsc-control-cse {
+    font-family: 'Droid Serif', Georgia, serif !important;
 }
 
 #content a, #content a:active, #content a:hover, #content a:visited,
@@ -123,40 +123,55 @@ div.continue-reading {
     font-size: 1.1em;
 }
 
+#language ul.menu > li, #language-single ul.menu > li, .external-languages a {
+    background-size: 24px !important;
+}
+
 #language ul.menu > li.lang-en, #language-single ul.menu > li.lang-en, .external-languages a.en {
-    background: transparent url('images/flags/en_us.png') no-repeat 1px;
+    background: transparent url('images/flags/US.png') no-repeat 1px;
 }
 
 #language ul.menu > li.lang-de, #language-single ul.menu > li.lang-de, .external-languages a.de {
-    background: transparent url('images/flags/de.png') no-repeat 1px;
+    background: transparent url('images/flags/DE.png') no-repeat 1px;
 }
 
 #language ul.menu > li.lang-fr, #language-single ul.menu > li.lang-fr, .external-languages a.fr {
-    background: transparent url('images/flags/fr_fr.png') no-repeat 1px;
+    background: transparent url('images/flags/FR.png') no-repeat 1px;
 }
 
 #language ul.menu > li.lang-es, #language-single ul.menu > li.lang-es, .external-languages a.es {
-    background: transparent url('images/flags/es.png') no-repeat 1px;
+    background: transparent url('images/flags/ES.png') no-repeat 1px;
 }
 
-#language ul.menu > li.lang-cn, #language-single ul.menu > li.lang-cn, .external-languages a.cn {
-    background: transparent url('images/flags/cn.png') no-repeat 1px;
+#language ul.menu > li.lang-cn, #language-single ul.menu > li.lang-cn, .external-languages a.cn,
+#language ul.menu > li.lang-zh_cn, #language-single ul.menu > li.lang-zh_cn {
+    background: transparent url('images/flags/CN.png') no-repeat 1px;
 }
 
 #language ul.menu > li.lang-ja, #language-single ul.menu > li.lang-ja, .external-languages a.ja {
-    background: transparent url('images/flags/ja.png') no-repeat 1px;
+    background: transparent url('images/flags/JP.png') no-repeat 1px;
 }
 
 #language ul.menu > li.lang-it, #language-single ul.menu > li.lang-it, .external-languages a.it {
-    background: transparent url('images/flags/it.png') no-repeat 1px;
+    background: transparent url('images/flags/IT.png') no-repeat 1px;
 }
 
 #language ul.menu > li.lang-ru, #language-single ul.menu > li.lang-ru, .external-languages a.ru {
-    background: transparent url('images/flags/ru.png') no-repeat 1px;
+    background: transparent url('images/flags/RU.png') no-repeat 1px;
 }
 
-#language ul.menu > li.lang-pt, #language-single ul.menu > li.lang-pt, .external-languages a.pt {
-    background: transparent url('images/flags/pt.png') no-repeat 1px;
+#language ul.menu > li.lang-pt_pt, #language-single ul.menu > li.lang-pt_pt, .external-languages a.pt,
+#language ul.menu > li.lang-pt_br, #language-single ul.menu > li.lang-pt_br {
+    background: transparent url('images/flags/BR.png') no-repeat 1px;
+}
+
+#language ul.menu > li.lang-ko, #language-single ul.menu > li.lang-ko,
+#language ul.menu > li.lang-ko_kr, #language-single ul.menu > li.lang-ko_kr {
+    background: transparent url('images/flags/KR.png') no-repeat 1px;
+}
+
+#language ul.menu > li.lang-pl, #language-single ul.menu > li.lang-pl, .external-languages a.pl {
+    background: transparent url('images/flags/PL.png') no-repeat 1px;
 }
 
 #main {
@@ -173,7 +188,7 @@ div.continue-reading {
 }
 
 .external-languages a {
-    padding-left: 20px;
+    padding-left: 30px;
 }
 
 .wp-caption {
@@ -202,4 +217,30 @@ div.continue-reading {
     height: 70px;
     width: 70px;
     padding: 5px;
+}
+
+/** Google Search Result **/
+
+#___gcse_0 table, #___gcse_1 table, .gsc-above-wrapper-area, #___gcse_0 table tr td, #___gcse_1 table tr td {
+    border: none;
+    border-bottom: 0 !important;
+    margin: 0;
+    padding: 0;
+}
+
+.gsc-input-box {
+    height: auto !important;
+}
+
+input.gsc-input {
+    padding: 10px !important;
+}
+
+#___gcse_0 table tr td.gsc-search-button {
+    padding: 5px;
+}
+
+.gsc-control-cse {
+    padding: 0 !important;
+    border: none !important;
 }
