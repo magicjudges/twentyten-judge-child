@@ -222,8 +222,7 @@ div.continue-reading {
 /** Google Search Result **/
 
 #___gcse_0 table, #___gcse_1 table, .gsc-above-wrapper-area, #___gcse_0 table tr td, #___gcse_1 table tr td {
-    border: none;
-    border-bottom: 0 !important;
+    border: 0;
     margin: 0;
     padding: 0;
 }
@@ -233,7 +232,12 @@ div.continue-reading {
 }
 
 input.gsc-input {
+    max-width: 90%;
     padding: 10px !important;
+}
+
+input.gsc-search-button {
+    margin-bottom: 0;
 }
 
 #___gcse_0 table tr td.gsc-search-button {
