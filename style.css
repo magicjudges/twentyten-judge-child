@@ -120,7 +120,8 @@ div.continue-reading {
     line-height: 38px;
     padding: 0 10px;
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 0.9em;
+    margin-left: 5px;
 }
 
 #language ul.menu > li, #language-single ul.menu > li, .external-languages a {
@@ -145,7 +146,11 @@ div.continue-reading {
 
 #language ul.menu > li.lang-cn, #language-single ul.menu > li.lang-cn, .external-languages a.cn,
 #language ul.menu > li.lang-zh_cn, #language-single ul.menu > li.lang-zh_cn {
-    background: transparent url('images/flags/CN.png') no-repeat 0;
+    background: transparent url('images/flags/CN_cn.png') no-repeat 0;
+}
+
+#language ul.menu > li.lang-zh_hk, #language-single ul.menu > li.lang-zh_hk {
+    background: transparent url('images/flags/CN_hk.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-ja, #language-single ul.menu > li.lang-ja, .external-languages a.ja {
@@ -160,6 +165,7 @@ div.continue-reading {
     background: transparent url('images/flags/RU.png') no-repeat 0;
 }
 
+#language ul.menu > li.lang-pt, #language-single ul.menu > li.lang-pt,
 #language ul.menu > li.lang-pt_pt, #language-single ul.menu > li.lang-pt_pt, .external-languages a.pt,
 #language ul.menu > li.lang-pt_br, #language-single ul.menu > li.lang-pt_br {
     background: transparent url('images/flags/BR.png') no-repeat 0;
