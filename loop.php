@@ -164,11 +164,13 @@
 			</div>
 			<!-- .entry-meta -->
 
-			<?php if ( has_post_thumbnail() ) : // check if the post has a Post Thumbnail assigned to it. ?>
+			<?php if(has_post_thumbnail()) { // check if the post has a Post Thumbnail assigned to it. ?>
 				<div class="featured-image">
 					<?php the_post_thumbnail(); ?>
 				</div>
-			<?php endif; ?>
+			<?php } else { ?>
+					<?php twentyten_featured_author(); ?>
+			<?php } ?>
 			<?php if ( is_archive() || is_search() ) : ?>
 				<div class="entry-summary">
 					<?php echo do_shortcode( get_the_excerpt() ); ?>

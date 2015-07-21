@@ -178,3 +178,34 @@ function show_author_info() {
 	}
 	return true;
 }
+
+/**
+ * Show the featured author image, if there is one set
+ * @requires external-author and lems-judge-image-helper plugins
+ */
+if(!function_exists('twentyten_featured_author')) {
+	function twentyten_featured_author() {
+		$image_html = '';
+		include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+		if(is_plugin_active('external-author/external-author.php')
+		   && is_plugin_active('lems-judge-image-helper/lems-judge-image-helper.php')
+		) {
+			if(get_post_meta(get_the_ID(), '_external_authors_no_author', true) == false) {
+				$external_authors = get_post_meta(get_the_ID(), '_external_authors', true);
+				$featured_index = get_post_meta(get_the_ID(), '_external_authors_featured', true);
+				$featured_author = false;
+				if(isset($external_authors[$featured_index])) {
+					$featured_author = $external_authors[ $featured_index ];
+				}
+
+				if($featured_author && !empty($featured_author['dci'])) {
+					$image_html = '<div class="featured-image">
+							<img src="' . get_source_from_dci( $featured_author['dci'] ) . '"
+								 class="wp-post-image" alt="' . htmlentities( $featured_author['name'] ) . '">
+						</div>';
+				}
+			}
+		}
+		echo $image_html;
+	}
+}
