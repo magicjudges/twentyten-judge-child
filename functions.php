@@ -3,7 +3,7 @@
 /**
  * Adds categories slugs as classes to the category in the loop to allow styling.
  */
-if ( !function_exists( 'twentyten_category_classes' ) ) :
+if ( ! function_exists( 'twentyten_category_classes' ) ) :
 	function twentyten_category_classes() {
 		echo 'cat-links';
 		$categories = get_the_category();
@@ -16,7 +16,7 @@ endif;
 /**
  * Replaces the meta data line of the parent theme with a custom one to allow the external author plugin to overwrite it.
  */
-if ( !function_exists( 'twentyten_posted_on' ) ) :
+if ( ! function_exists( 'twentyten_posted_on' ) ) :
 	function twentyten_posted_on() {
 		$author_html = sprintf( ' <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 			get_author_posts_url( get_the_author_meta( 'ID' ) ),
@@ -32,9 +32,9 @@ if ( !function_exists( 'twentyten_posted_on' ) ) :
 				$external_authors = get_post_meta( get_the_ID(), '_external_authors', true );
 				if ( $external_authors && count( $external_authors ) > 0 ) {
 					$author_html = ' <span class="meta-sep">by</span> ';
-					$i = 0;
+					$i           = 0;
 					foreach ( $external_authors as $author ) {
-						if ( is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' ) && !empty( $author['dci'] ) ) {
+						if ( is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' ) && ! empty( $author['dci'] ) ) {
 							$single_author_html = do_shortcode( sprintf( '[judge dci=%2$s]%1$s[/judge]',
 								$author['name'],
 								$author['dci']
@@ -52,7 +52,7 @@ if ( !function_exists( 'twentyten_posted_on' ) ) :
 						} else if ( $i < count( $external_authors ) - 1 ) {
 							$author_html .= ' ' . __( ' and ' );
 						}
-						$i++;
+						$i ++;
 					}
 				}
 			}
@@ -73,7 +73,7 @@ endif;
 /**
  * Custom continue reading link.
  */
-if ( !function_exists( 'twentyten_continue_reading_link' ) ) :
+if ( ! function_exists( 'twentyten_continue_reading_link' ) ) :
 	function twentyten_continue_reading_link() {
 		return '<div class="continue-reading"><a class="pure-button" href="' . get_permalink() . '">' . __( 'Continue reading', 'twentyten' ) . '</a></div>';
 	}
@@ -88,11 +88,11 @@ add_filter( 'post_thumbnail_size', 'twentyten_judge_child_thumbnail_size' );
 function theme_setup() {
 	load_theme_textdomain( 'twentyten', get_stylesheet_directory() . '/languages' );
 	register_nav_menus( array(
-		'language' => __( 'Language Navigation', 'twentyten-judge' ),
+		'language'        => __( 'Language Navigation', 'twentyten-judge' ),
 		'language-single' => __( 'Language Navigation Single', 'twentyten-judge' )
 	) );
 
-	if ( !get_theme_mod( 'show_excerpts' ) ) {
+	if ( ! get_theme_mod( 'show_excerpts' ) ) {
 		set_theme_mod( 'show_excerpts', 'excerpts' );
 	}
 
@@ -127,8 +127,9 @@ function twentyten_judge_child_wp_trim_excerpt( $text = '' ) {
 		 * @param string $more_string The string shown within the more link.
 		 */
 		$excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
-		$text = wp_trim_words( $text, $excerpt_length, $excerpt_more );
+		$text         = wp_trim_words( $text, $excerpt_length, $excerpt_more );
 	}
+
 	/**
 	 * Filter the trimmed excerpt string.
 	 *
@@ -137,6 +138,7 @@ function twentyten_judge_child_wp_trim_excerpt( $text = '' ) {
 	 * @param string $text The trimmed text.
 	 * @param string $raw_excerpt The text prior to trimming.
 	 */
+
 	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
 }
 
@@ -144,23 +146,23 @@ add_filter( 'get_the_excerpt', 'twentyten_judge_child_wp_trim_excerpt', 99, 1 );
 
 function judge_child_customizer( WP_Customize_Manager $wp_customize ) {
 	$wp_customize->add_setting( 'show_excerpts', array(
-		'default' => 'excerpts',
+		'default'   => 'excerpts',
 		'transport' => 'refresh',
 	) );
 
 	$wp_customize->add_section( 'judge_child_customizer', array(
-		'title' => __( 'Content Options', 'twentyten-judge' ),
+		'title'    => __( 'Content Options', 'twentyten-judge' ),
 		'priority' => 100,
 	) );
 
 	$wp_customize->add_control( 'judge_child_excerpt_control', array(
-		'label' => __( 'Content Excerpts' ),
-		'section' => 'judge_child_customizer',
+		'label'    => __( 'Content Excerpts' ),
+		'section'  => 'judge_child_customizer',
 		'settings' => 'show_excerpts',
-		'type' => 'radio',
-		'choices' => array(
+		'type'     => 'radio',
+		'choices'  => array(
 			'excerpts' => __( 'Only Excerpts', 'twentyten-judge' ),
-			'full' => __( 'Full Posts', 'twentyten-judge' )
+			'full'     => __( 'Full Posts', 'twentyten-judge' )
 		)
 	) );
 
@@ -171,11 +173,12 @@ add_action( 'customize_register', 'judge_child_customizer' );
 function show_author_info() {
 	if ( is_plugin_active( 'external-author/external-author.php' ) ) {
 		if ( get_post_meta( get_the_ID(), '_external_authors_no_author', true ) ||
-			count( get_post_meta( get_the_ID(), '_external_authors', true ) ) > 0
+		     count( get_post_meta( get_the_ID(), '_external_authors', true ) ) > 0
 		) {
 			return false;
 		}
 	}
+
 	return true;
 }
 
@@ -183,22 +186,22 @@ function show_author_info() {
  * Show the featured author image, if there is one set
  * @requires external-author and lems-judge-image-helper plugins
  */
-if(!function_exists('twentyten_featured_author')) {
+if ( ! function_exists( 'twentyten_featured_author' ) ) {
 	function twentyten_featured_author() {
 		$image_html = '';
-		include_once(ABSPATH . 'wp-admin/includes/plugin.php');
-		if(is_plugin_active('external-author/external-author.php')
-		   && is_plugin_active('lems-judge-image-helper/lems-judge-image-helper.php')
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		if ( is_plugin_active( 'external-author/external-author.php' )
+		     && is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' )
 		) {
-			if(get_post_meta(get_the_ID(), '_external_authors_no_author', true) == false) {
-				$external_authors = get_post_meta(get_the_ID(), '_external_authors', true);
-				$featured_index = get_post_meta(get_the_ID(), '_external_authors_featured', true);
-				$featured_author = false;
-				if(isset($external_authors[$featured_index])) {
+			if ( get_post_meta( get_the_ID(), '_external_authors_no_author', true ) == false ) {
+				$external_authors = get_post_meta( get_the_ID(), '_external_authors', true );
+				$featured_index   = get_post_meta( get_the_ID(), '_external_authors_featured', true );
+				$featured_author  = false;
+				if ( isset( $external_authors[ $featured_index ] ) ) {
 					$featured_author = $external_authors[ $featured_index ];
 				}
 
-				if($featured_author && !empty($featured_author['dci'])) {
+				if ( $featured_author && ! empty( $featured_author['dci'] ) ) {
 					$image_html = '<div class="featured-image">
 							<img src="' . get_source_from_dci( $featured_author['dci'] ) . '"
 								 class="wp-post-image" alt="' . htmlentities( $featured_author['name'] ) . '">
