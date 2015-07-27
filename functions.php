@@ -32,7 +32,7 @@ if ( ! function_exists( 'twentyten_posted_on' ) ) :
 				$external_authors = get_post_meta( get_the_ID(), '_external_authors', true );
 				if ( $external_authors && count( $external_authors ) > 0 ) {
 					$author_html = ' <span class="meta-sep">by</span> ';
-					$i           = 0;
+					$i = 0;
 					foreach ( $external_authors as $author ) {
 						if ( is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' ) && ! empty( $author['dci'] ) ) {
 							$single_author_html = do_shortcode( sprintf( '[judge dci=%2$s]%1$s[/judge]',
@@ -52,7 +52,7 @@ if ( ! function_exists( 'twentyten_posted_on' ) ) :
 						} else if ( $i < count( $external_authors ) - 1 ) {
 							$author_html .= ' ' . __( ' and ' );
 						}
-						$i ++;
+						$i++;
 					}
 				}
 			}
@@ -88,7 +88,7 @@ add_filter( 'post_thumbnail_size', 'twentyten_judge_child_thumbnail_size' );
 function theme_setup() {
 	load_theme_textdomain( 'twentyten', get_stylesheet_directory() . '/languages' );
 	register_nav_menus( array(
-		'language'        => __( 'Language Navigation', 'twentyten-judge' ),
+		'language' => __( 'Language Navigation', 'twentyten-judge' ),
 		'language-single' => __( 'Language Navigation Single', 'twentyten-judge' )
 	) );
 
@@ -146,23 +146,23 @@ add_filter( 'get_the_excerpt', 'twentyten_judge_child_wp_trim_excerpt', 99, 1 );
 
 function judge_child_customizer( WP_Customize_Manager $wp_customize ) {
 	$wp_customize->add_setting( 'show_excerpts', array(
-		'default'   => 'excerpts',
+		'default' => 'excerpts',
 		'transport' => 'refresh',
 	) );
 
 	$wp_customize->add_section( 'judge_child_customizer', array(
-		'title'    => __( 'Content Options', 'twentyten-judge' ),
+		'title' => __( 'Content Options', 'twentyten-judge' ),
 		'priority' => 100,
 	) );
 
 	$wp_customize->add_control( 'judge_child_excerpt_control', array(
-		'label'    => __( 'Content Excerpts' ),
-		'section'  => 'judge_child_customizer',
+		'label' => __( 'Content Excerpts' ),
+		'section' => 'judge_child_customizer',
 		'settings' => 'show_excerpts',
-		'type'     => 'radio',
-		'choices'  => array(
+		'type' => 'radio',
+		'choices' => array(
 			'excerpts' => __( 'Only Excerpts', 'twentyten-judge' ),
-			'full'     => __( 'Full Posts', 'twentyten-judge' )
+			'full' => __( 'Full Posts', 'twentyten-judge' )
 		)
 	) );
 
@@ -173,7 +173,7 @@ add_action( 'customize_register', 'judge_child_customizer' );
 function show_author_info() {
 	if ( is_plugin_active( 'external-author/external-author.php' ) ) {
 		if ( get_post_meta( get_the_ID(), '_external_authors_no_author', true ) ||
-		     count( get_post_meta( get_the_ID(), '_external_authors', true ) ) > 0
+			 count( get_post_meta( get_the_ID(), '_external_authors', true ) ) > 0
 		) {
 			return false;
 		}
@@ -191,7 +191,7 @@ if ( ! function_exists( 'twentyten_featured_author' ) ) {
 		$image_html = '';
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		if ( is_plugin_active( 'external-author/external-author.php' )
-		     && is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' )
+			 && is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' )
 		) {
 			if ( get_post_meta( get_the_ID(), '_external_authors_no_author', true ) == false ) {
 				$external_authors = get_post_meta( get_the_ID(), '_external_authors', true );
@@ -203,9 +203,9 @@ if ( ! function_exists( 'twentyten_featured_author' ) ) {
 
 				if ( $featured_author && ! empty( $featured_author['dci'] ) ) {
 					$image_html = '<div class="featured-image">
-							<img src="' . get_source_from_dci( $featured_author['dci'] ) . '"
-								 class="wp-post-image" alt="' . htmlentities( $featured_author['name'] ) . '">
-						</div>';
+					<img src="' . get_source_from_dci( $featured_author['dci'] ) . '"
+						 class="wp-post-image" alt="' . htmlentities( $featured_author['name'] ) . '">
+				</div>';
 				}
 			}
 		}

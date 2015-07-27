@@ -79,7 +79,7 @@
 					$images = twentyten_get_gallery_images();
 					if ( $images ) :
 						$total_images = count( $images );
-						$image        = array_shift( $images );
+						$image = array_shift( $images );
 						?>
 						<div class="gallery-thumb">
 							<a class="size-thumbnail"
@@ -164,13 +164,13 @@
 			</div>
 			<!-- .entry-meta -->
 
-			<?php if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it. ?>
+			<?php if ( has_post_thumbnail() ) : // check if the post has a Post Thumbnail assigned to it. ?>
 				<div class="featured-image">
 					<?php the_post_thumbnail(); ?>
 				</div>
-			<?php } else { ?>
+			<?php else : ?>
 				<?php twentyten_featured_author(); ?>
-			<?php } ?>
+			<?php endif; ?>
 			<?php if ( is_archive() || is_search() ) : ?>
 				<div class="entry-summary">
 					<?php echo do_shortcode( get_the_excerpt() ); ?>
@@ -186,7 +186,7 @@
 					?>
 					<?php wp_link_pages( array(
 						'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ),
-						'after'  => '</div>'
+						'after' => '</div>'
 					) ); ?>
 				</div><!-- .entry-content -->
 			<?php endif; ?>
