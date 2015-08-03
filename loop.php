@@ -62,7 +62,7 @@
 
 	<?php /* How to display posts of the Gallery format. The gallery category is the old way. */ ?>
 
-	<?php if ( (function_exists( 'get_post_format' ) && 'gallery' == get_post_format( $post->ID )) || in_category( _x( 'gallery', 'gallery category slug', 'twentyten' ) ) ) : ?>
+	<?php if ( ( function_exists( 'get_post_format' ) && 'gallery' == get_post_format( $post->ID ) ) || in_category( _x( 'gallery', 'gallery category slug', 'twentyten' ) ) ) : ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
@@ -106,7 +106,7 @@
 					   title="<?php esc_attr_e( 'View posts in the Gallery category', 'twentyten' ); ?>"><?php _e( 'More Galleries', 'twentyten' ); ?></a>
 					<span class="meta-sep">|</span>
 				<?php endif; ?>
-				<?php if ( strlen( ($comment_url = get_post_meta( get_the_ID(), '_comment_url', true )) ) > 1 ) : ?>
+				<?php if ( strlen( ( $comment_url = get_post_meta( get_the_ID(), '_comment_url', true ) ) ) > 1 ) : ?>
 					<span class="comments-link"><a
 							href="<?php echo $comment_url ?>"><?php echo get_option( 'comments_link_text', __( 'Leave a comment' ) ) ?></a></span>
 				<?php else : ?>
@@ -120,7 +120,7 @@
 
 		<?php /* How to display posts of the Aside format. The asides category is the old way. */ ?>
 
-	<?php elseif ( (function_exists( 'get_post_format' ) && 'aside' == get_post_format( $post->ID )) || in_category( _x( 'asides', 'asides category slug', 'twentyten' ) ) ) : ?>
+	<?php elseif ( ( function_exists( 'get_post_format' ) && 'aside' == get_post_format( $post->ID ) ) || in_category( _x( 'asides', 'asides category slug', 'twentyten' ) ) ) : ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 			<?php if ( is_archive() || is_search() ) : // Display excerpts for archives and search. ?>
@@ -136,7 +136,7 @@
 			<div class="entry-utility">
 				<?php twentyten_posted_on(); ?>
 				<span class="meta-sep">|</span>
-				<?php if ( strlen( ($comment_url = get_post_meta( get_the_ID(), '_comment_url', true )) ) > 1 ) : ?>
+				<?php if ( strlen( ( $comment_url = get_post_meta( get_the_ID(), '_comment_url', true ) ) ) > 1 ) : ?>
 					<span class="comments-link"><a
 							href="<?php echo $comment_url ?>"><?php echo get_option( 'comments_link_text', __( 'Leave a comment' ) ) ?></a></span>
 				<?php else : ?>
@@ -150,7 +150,7 @@
 
 		<?php /* How to display all other posts. */ ?>
 
-	<?php
+		<?php
 	else : ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="<?php twentyten_category_classes() ?>">
@@ -168,6 +168,8 @@
 				<div class="featured-image">
 					<?php the_post_thumbnail(); ?>
 				</div>
+			<?php else : ?>
+				<?php twentyten_featured_author(); ?>
 			<?php endif; ?>
 			<?php if ( is_archive() || is_search() ) : ?>
 				<div class="entry-summary">
@@ -176,13 +178,16 @@
 			<?php else : ?>
 				<div class="entry-content">
 					<?php
-					if(get_theme_mod('show_excerpts') == 'full') {
+					if ( get_theme_mod( 'show_excerpts' ) == 'full' ) {
 						the_content();
 					} else {
 						echo do_shortcode( get_the_excerpt() );
 					}
 					?>
-					<?php wp_link_pages( array('before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>') ); ?>
+					<?php wp_link_pages( array(
+						'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ),
+						'after' => '</div>'
+					) ); ?>
 				</div><!-- .entry-content -->
 			<?php endif; ?>
 
@@ -200,7 +205,7 @@
 					}
 					?>
 				<?php endif; ?>
-				<?php if ( strlen( ($comment_url = get_post_meta( get_the_ID(), '_comment_url', true )) ) > 1 ) : ?>
+				<?php if ( strlen( ( $comment_url = get_post_meta( get_the_ID(), '_comment_url', true ) ) ) > 1 ) : ?>
 					<span class="comments-link"><a
 							href="<?php echo $comment_url ?>"><?php echo get_option( 'comments_link_text', __( 'Leave a comment' ) ) ?></a></span>
 				<?php else : ?>

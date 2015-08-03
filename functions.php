@@ -3,7 +3,7 @@
 /**
  * Adds categories slugs as classes to the category in the loop to allow styling.
  */
-if ( !function_exists( 'twentyten_category_classes' ) ) :
+if ( ! function_exists( 'twentyten_category_classes' ) ) :
 	function twentyten_category_classes() {
 		echo 'cat-links';
 		$categories = get_the_category();
@@ -16,7 +16,7 @@ endif;
 /**
  * Replaces the meta data line of the parent theme with a custom one to allow the external author plugin to overwrite it.
  */
-if ( !function_exists( 'twentyten_posted_on' ) ) :
+if ( ! function_exists( 'twentyten_posted_on' ) ) :
 	function twentyten_posted_on() {
 		$author_html = sprintf( ' <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 			get_author_posts_url( get_the_author_meta( 'ID' ) ),
@@ -34,7 +34,7 @@ if ( !function_exists( 'twentyten_posted_on' ) ) :
 					$author_html = ' <span class="meta-sep">by</span> ';
 					$i = 0;
 					foreach ( $external_authors as $author ) {
-						if ( is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' ) && !empty( $author['dci'] ) ) {
+						if ( is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' ) && ! empty( $author['dci'] ) ) {
 							$single_author_html = do_shortcode( sprintf( '[judge dci=%2$s]%1$s[/judge]',
 								$author['name'],
 								$author['dci']
@@ -73,7 +73,7 @@ endif;
 /**
  * Custom continue reading link.
  */
-if ( !function_exists( 'twentyten_continue_reading_link' ) ) :
+if ( ! function_exists( 'twentyten_continue_reading_link' ) ) :
 	function twentyten_continue_reading_link() {
 		return '<div class="continue-reading"><a class="pure-button" href="' . get_permalink() . '">' . __( 'Continue reading', 'twentyten' ) . '</a></div>';
 	}
@@ -92,7 +92,7 @@ function theme_setup() {
 		'language-single' => __( 'Language Navigation Single', 'twentyten-judge' )
 	) );
 
-	if ( !get_theme_mod( 'show_excerpts' ) ) {
+	if ( ! get_theme_mod( 'show_excerpts' ) ) {
 		set_theme_mod( 'show_excerpts', 'excerpts' );
 	}
 
@@ -127,8 +127,9 @@ function twentyten_judge_child_wp_trim_excerpt( $text = '' ) {
 		 * @param string $more_string The string shown within the more link.
 		 */
 		$excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
-		$text = wp_trim_words( $text, $excerpt_length, $excerpt_more );
+		$text         = wp_trim_words( $text, $excerpt_length, $excerpt_more );
 	}
+
 	/**
 	 * Filter the trimmed excerpt string.
 	 *
@@ -137,6 +138,7 @@ function twentyten_judge_child_wp_trim_excerpt( $text = '' ) {
 	 * @param string $text The trimmed text.
 	 * @param string $raw_excerpt The text prior to trimming.
 	 */
+
 	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
 }
 
@@ -171,10 +173,42 @@ add_action( 'customize_register', 'judge_child_customizer' );
 function show_author_info() {
 	if ( is_plugin_active( 'external-author/external-author.php' ) ) {
 		if ( get_post_meta( get_the_ID(), '_external_authors_no_author', true ) ||
-			count( get_post_meta( get_the_ID(), '_external_authors', true ) ) > 0
+			 count( get_post_meta( get_the_ID(), '_external_authors', true ) ) > 0
 		) {
 			return false;
 		}
 	}
+
 	return true;
+}
+
+/**
+ * Show the featured author image, if there is one set
+ * @requires external-author and lems-judge-image-helper plugins
+ */
+if ( ! function_exists( 'twentyten_featured_author' ) ) {
+	function twentyten_featured_author() {
+		$image_html = '';
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		if ( is_plugin_active( 'external-author/external-author.php' )
+			 && is_plugin_active( 'lems-judge-image-helper/lems-judge-image-helper.php' )
+		) {
+			if ( get_post_meta( get_the_ID(), '_external_authors_no_author', true ) == false ) {
+				$external_authors = get_post_meta( get_the_ID(), '_external_authors', true );
+				$featured_index   = get_post_meta( get_the_ID(), '_external_authors_featured', true );
+				$featured_author  = false;
+				if ( isset( $external_authors[ $featured_index ] ) ) {
+					$featured_author = $external_authors[ $featured_index ];
+				}
+
+				if ( $featured_author && ! empty( $featured_author['dci'] ) ) {
+					$image_html = '<div class="featured-image">
+					<img src="' . get_source_from_dci( $featured_author['dci'] ) . '"
+						 class="wp-post-image" alt="' . htmlentities( $featured_author['name'] ) . '">
+				</div>';
+				}
+			}
+		}
+		echo $image_html;
+	}
 }
