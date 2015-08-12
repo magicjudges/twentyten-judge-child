@@ -79,7 +79,7 @@
 					$images = twentyten_get_gallery_images();
 					if ( $images ) :
 						$total_images = count( $images );
-						$image = array_shift( $images );
+						$image        = array_shift( $images );
 						?>
 						<div class="gallery-thumb">
 							<a class="size-thumbnail"
@@ -186,7 +186,7 @@
 					?>
 					<?php wp_link_pages( array(
 						'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ),
-						'after' => '</div>'
+						'after'  => '</div>'
 					) ); ?>
 				</div><!-- .entry-content -->
 			<?php endif; ?>

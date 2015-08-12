@@ -18,143 +18,143 @@
 @import url(http://yui.yahooapis.com/pure/0.3.0/buttons-min.css);
 
 h3#comments-title, h3#reply-title, #access .menu, #access div.menu ul, ul.menu, #cancel-comment-reply-link, .form-allowed-tags, #site-info, #site-title, #wp-calendar, .comment-meta, .comment-body tr th, .comment-body thead th, .entry-content label, .entry-content tr th, .entry-content thead th, .entry-meta, .entry-title, .entry-utility, #respond label, .navigation, .page-title, .pingback p, .reply, .widget-title, .wp-caption-text, .widget-area, div.cat-links > a, div.continue-reading {
-    font-family: Open Sans, Arial, Helvetica, sans-serif;
+	font-family: Open Sans, Arial, Helvetica, sans-serif;
 }
 
 body, input, textarea, .page-title span, .pingback a.url, .gsc-control-cse {
-    font-family: 'Droid Serif', Georgia, serif !important;
+	font-family: 'Droid Serif', Georgia, serif !important;
 }
 
 #content a, #content a:active, #content a:hover, #content a:visited,
 .widget-area a, .widget-area a:active, .widget-area a:hover, .widget-area a:visited {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .entry-content a, .entry-content a:visited, .widget-area a, .widget-area a:visited, .widget_rss a.rsswidget {
-    color: #0066cc;
+	color: #0066cc;
 }
 
 #content a:active, #content a:hover, .widget-area a:active, .widget-area a:hover,
 #language a:hover, #language a:active, #language-single a:hover, #language a:active,
 .widget_rss a.rsswidget:hover, .widget_rss a.rsswidget:active {
-    color: #ff8c00;
+	color: #ff8c00;
 }
 
 #content .featured-image {
-    display: inline-block;
-    float: left;
-    margin-right: 20px;
-    padding-top: 12px;
+	display: inline-block;
+	float: left;
+	margin-right: 20px;
+	padding-top: 12px;
 }
 
 .entry-content, .entry-summary {
-    clear: right;
+	clear: right;
 }
 
 div.cat-links {
-    margin-bottom: 2px;
+	margin-bottom: 2px;
 }
 
 div.cat-links > a {
-    text-transform: uppercase;
-    font-size: .8em;
-    font-weight: bold;
-    color: black;
+	text-transform: uppercase;
+	font-size: .8em;
+	font-weight: bold;
+	color: black;
 }
 
 div.continue-reading {
-    margin: 5px 0;
+	margin: 5px 0;
 }
 
 #content a.pure-button {
-    color: black;
-    font-weight: bold;
-    margin-bottom: 5px;
+	color: black;
+	font-weight: bold;
+	margin-bottom: 5px;
 }
 
 .post .featured-image ~ .entry-content {
-    margin-left: 129px;
-    padding-left: 20px;
+	margin-left: 129px;
+	padding-left: 20px;
 }
 
 .featured-image img {
-    width: 125px;
-    height: 125px;
-    border-radius: 5px;
-    border: 2px solid;
-    -moz-border-radius: 5px;
-    box-shadow: 1px 1px 5px #888888;
+	width: 125px;
+	height: 125px;
+	border-radius: 5px;
+	border: 2px solid;
+	-moz-border-radius: 5px;
+	box-shadow: 1px 1px 5px #888888;
 }
 
 /** Xili language **/
 
 #language {
-    display: block;
-    margin: 0 auto;
-    float: left;
-    width: 940px;
+	display: block;
+	margin: 0 auto;
+	float: left;
+	width: 940px;
 }
 
 #language-single {
-    display: block;
-    margin: 0 auto;
-    float: left;
-    width: 640px;
+	display: block;
+	margin: 0 auto;
+	float: left;
+	width: 640px;
 }
 
 #language ul.menu,
 #language-single ul.menu {
-    list-style: none;
-    margin: 0;
-    float: right;
+	list-style: none;
+	margin: 0;
+	float: right;
 }
 
 #language ul.menu li,
 #language-single ul.menu li {
-    float: left;
-    position: relative;
-    padding-left: 15px;
+	float: left;
+	position: relative;
+	padding-left: 15px;
 }
 
 #language a,
 #language-single a {
-    color: black;
-    display: block;
-    line-height: 38px;
-    padding: 0 10px;
-    text-decoration: none;
-    font-size: 0.9em;
-    margin-left: 5px;
+	color: black;
+	display: block;
+	line-height: 38px;
+	padding: 0 10px;
+	text-decoration: none;
+	font-size: 0.9em;
+	margin-left: 5px;
 }
 
 #language ul.menu > li,
 #language-single ul.menu > li,
 .external-languages a {
-    background-size: 24px !important;
+	background-size: 24px !important;
 }
 
 #language ul.menu > li.lang-en,
 #language-single ul.menu > li.lang-en,
 .external-languages a.en {
-    background: transparent url('images/flags/US.png') no-repeat 0;
+	background: transparent url('images/flags/US.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-de,
 #language-single ul.menu > li.lang-de,
 .external-languages a.de {
-    background: transparent url('images/flags/DE.png') no-repeat 0;
+	background: transparent url('images/flags/DE.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-fr,
 #language-single ul.menu > li.lang-fr,
 .external-languages a.fr {
-    background: transparent url('images/flags/FR.png') no-repeat 0;
+	background: transparent url('images/flags/FR.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-es,
 #language-single ul.menu > li.lang-es,
 .external-languages a.es {
-    background: transparent url('images/flags/ES.png') no-repeat 0;
+	background: transparent url('images/flags/ES.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-cn,
@@ -162,30 +162,30 @@ div.continue-reading {
 .external-languages a.cn,
 #language ul.menu > li.lang-zh_cn,
 #language-single ul.menu > li.lang-zh_cn {
-    background: transparent url('images/flags/CN_cn.png') no-repeat 0;
+	background: transparent url('images/flags/CN_cn.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-zh_hk,
 #language-single ul.menu > li.lang-zh_hk {
-    background: transparent url('images/flags/CN_hk.png') no-repeat 0;
+	background: transparent url('images/flags/CN_hk.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-ja,
 #language-single ul.menu > li.lang-ja,
 .external-languages a.ja {
-    background: transparent url('images/flags/JP.png') no-repeat 0;
+	background: transparent url('images/flags/JP.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-it,
 #language-single ul.menu > li.lang-it,
 .external-languages a.it {
-    background: transparent url('images/flags/IT.png') no-repeat 0;
+	background: transparent url('images/flags/IT.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-ru,
 #language-single ul.menu > li.lang-ru,
 .external-languages a.ru {
-    background: transparent url('images/flags/RU.png') no-repeat 0;
+	background: transparent url('images/flags/RU.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-pt,
@@ -194,93 +194,93 @@ div.continue-reading {
 #language-single ul.menu > li.lang-pt_pt, .external-languages a.pt,
 #language ul.menu > li.lang-pt_br,
 #language-single ul.menu > li.lang-pt_br {
-    background: transparent url('images/flags/BR.png') no-repeat 0;
+	background: transparent url('images/flags/BR.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-ko,
 #language-single ul.menu > li.lang-ko,
 #language ul.menu > li.lang-ko_kr,
 #language-single ul.menu > li.lang-ko_kr {
-    background: transparent url('images/flags/KR.png') no-repeat 0;
+	background: transparent url('images/flags/KR.png') no-repeat 0;
 }
 
 #language ul.menu > li.lang-pl,
 #language-single ul.menu > li.lang-pl,
 .external-languages a.pl {
-    background: transparent url('images/flags/PL.png') no-repeat 0;
+	background: transparent url('images/flags/PL.png') no-repeat 0;
 }
 
 #main {
-    padding-top: 20px;
+	padding-top: 20px;
 }
 
 .external-languages {
-    float: right;
+	float: right;
 }
 
 .external-languages ul {
-    list-style: none;
-    margin: 0;
+	list-style: none;
+	margin: 0;
 }
 
 .external-languages a {
-    padding-left: 30px;
+	padding-left: 30px;
 }
 
 .wp-caption {
-    max-width: 100%;
+	max-width: 100%;
 }
 
 .wp-caption img {
-    display: block;
-    margin: 1.2% auto 0;
-    max-width: 98%;
+	display: block;
+	margin: 1.2% auto 0;
+	max-width: 98%;
 }
 
 .wp-caption-text {
-    text-align: center;
+	text-align: center;
 }
 
 .wp-caption .wp-caption-text {
-    margin: 0.8075em 0;
+	margin: 0.8075em 0;
 }
 
 .entry-content, .entry-summary {
-    padding: 0;
+	padding: 0;
 }
 
 #entry-author-info #author-avatar {
-    height: 70px;
-    width: 70px;
-    padding: 5px;
+	height: 70px;
+	width: 70px;
+	padding: 5px;
 }
 
 /** Google Search Result **/
 
 #___gcse_0 table, #___gcse_1 table, .gsc-above-wrapper-area, #___gcse_0 table tr td, #___gcse_1 table tr td {
-    border: 0;
-    margin: 0;
-    padding: 0;
+	border: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .gsc-input-box {
-    height: auto !important;
+	height: auto !important;
 }
 
 input.gsc-input {
-    max-width: 90%;
-    padding: 10px !important;
+	max-width: 90%;
+	padding: 10px !important;
 }
 
 input.gsc-search-button {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 #___gcse_0 table tr td.gsc-search-button {
-    padding: 5px;
+	padding: 5px;
 }
 
 .gsc-control-cse {
-    padding: 0 !important;
-    border: none !important;
+	padding: 0 !important;
+	border: none !important;
 }
